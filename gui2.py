@@ -4,7 +4,7 @@ from os import listdir
 from os.path import isfile, join
 import json
 
-CMS = {'version':'0.2'}
+CMS = {'version':'0.3'}
 collection = [1,2,3]
 MAXID = 0
 SELID=0 #ID of selected article
