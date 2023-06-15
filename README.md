@@ -17,7 +17,7 @@ Project is still in very early stages.
 
 todo :
 
-editing, deleting articles
-search
-categories (add, edit, delete, filter)
-etc.
+- editing, deleting articles
+- search
+- categories (add, edit, delete, filter)
+- etc.
