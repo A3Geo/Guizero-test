@@ -6,7 +6,7 @@ The GUI is made using the GuiZero library
 
 I created this to learn (more) Python and I could use a simple and portable note taking application. *Learning by doing !*
 
-Project is still in very early stages.
+Project is still in very early stages and has been tested with just a small number of files
 
 'features' implemented :
 
@@ -14,11 +14,11 @@ Project is still in very early stages.
 - listing them
 - selecting & viewing them
 - editing them
+- searching them
 - saving them as JSON
 
 todo :
 
 - deleting articles
-- search
 - categories (add, edit, delete, filter)
 - etc.
