@@ -7,6 +7,8 @@ import json
 CMS = {'version':'0.2'}
 collection = [1,2,3]
 MAXID = 0
+SELID=0 #ID of selected article
+ART={}
 
 
 def saveArt(pArt):
@@ -16,11 +18,12 @@ def saveArt(pArt):
     f.close()    
 
 def getArtByID(pID):
+    global ART
     #print('ShowArt :' + str(id))
     f= open('articles/' + str(pID) + '.json','r')
-    tmp = json.loads(f.read())
+    ART = json.loads(f.read())
     f.close()
-    return tmp['Content']
+    #return tmp['Content']
 
 #def showCollection():
 #    for i in collection:
@@ -44,7 +47,7 @@ def showFile(pFile):
     if int(tmp['ID']) > MAXID :
         MAXID = int(tmp['ID'])
 
-def btnClick():
+def btnNew_Click():
     print(txtInp.value)
     if len(txtInp.value) <3:
         return
@@ -53,6 +56,11 @@ def btnClick():
     txtInp.clear() 
     txtTitle.clear()
     showFiles()
+
+def btnEdit_Click():
+    ART['Content'] = txtArticle.value
+    saveArt(ART)
+
 
 def newArticle(pTitle,pTxt, pID):
     art = {
@@ -66,11 +74,13 @@ def newArticle(pTitle,pTxt, pID):
     saveArt(art)
     
 def lstArticles_click(pItem):
+    global ART
     print(pItem)
-    id = pItem.split(":")[0].strip()
+    SELID = pItem.split(":")[0].strip()
 
     txtArticle.clear()
-    txtArticle.append(getArtByID(id))
+    getArtByID(SELID)
+    txtArticle.append(ART['Content'])
     
 #==========================================================================================================
 #     
@@ -93,7 +103,7 @@ Text(content_box, text="Enter titel & text : \n")
 form_box = Box(content_box, layout="grid", width="fill",  border=False)
 txtTitle = TextBox(form_box ,grid=[0,0],width="110")
 txtInp = TextBox(form_box, grid=[0,1],align="left",width="fill", multiline=True, scrollbar=True, height="5")
-button = PushButton(form_box, btnClick, grid=[0,2],text="Save")
+button = PushButton(form_box, btnNew_Click, grid=[0,2],text="Save",align="right")
 
 #showCollection()
 
@@ -102,6 +112,7 @@ artlist_box = Box(content_box, layout="grid", width="600", height="fill", align=
 Text(artlist_box,grid=[0,0],text="\nARTICLE files : \n",align="left")
 lstArticles = ListBox(artlist_box, grid=[0,1],items=["-- Select --"],width=100,height=200, align="top", scrollbar=True,command=lstArticles_click)
 txtArticle = TextBox(artlist_box, grid=[1,1],width="64", height="30", multiline=True, scrollbar=True)
+button = PushButton(artlist_box, btnEdit_Click, grid=[1,2],text="Update",align="right")
 showFiles()
 Text(artlist_box,grid=[1,0],text=f"\nMAX id : {MAXID}\n",align="right")
 
