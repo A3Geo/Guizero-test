@@ -14,3 +14,7 @@ Project is still in very early stages.
 - saving them as JSON
 - listing them
 - viewing them
+
+todo :
+
+lots :-)
