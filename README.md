@@ -10,14 +10,15 @@ Project is still in very early stages.
 
 'features' implemented :
 
-- creating articles
-- saving them as JSON
+- creating articles in the GUI
 - listing them
-- viewing them
+- selecting & viewing them
+- editing them
+- saving them as JSON
 
 todo :
 
-- editing, deleting articles
+- deleting articles
 - search
 - categories (add, edit, delete, filter)
 - etc.
